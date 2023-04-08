@@ -28,6 +28,8 @@
       socket.on("chat message", function (msg) {
         document.body.style.background = msg.color;
         document.body.style.transitionDuration = msg.xfade;
+        var content = document.getElementById("content");
+        content.style.display = "none";
       });
     </script>
     <div id="content">Ready</div>

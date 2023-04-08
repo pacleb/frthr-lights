@@ -3,27 +3,97 @@
   <head>
     <title>FRTHR Lights Console</title>
     <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #xfade_value {
+        font-weight: bold;
+        font-size: 1.3em;
+        color: black;
+      }
       button {
-        padding: 10px;
+        display: inline-block;
+        padding: 20px;
+        width: 200px;
+        color: #ffffff;
+        text-align: center;
+        border: 4px double #cccccc;
+        border-radius: 10px;
         font-size: 1.5em;
+        font-weight: bold;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      .red {
+        background-color: red;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .yellow {
+        background-color: yellow;
+        color: black;
+      }
+      .green {
+        background-color: green;
+      }
+      .slidecontainer {
+        width: 100%; /* Width of the outside container */
+      }
+      .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 50px;
+        background: #8e8e8e;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+      }
+      #buttons {
+        text-align: center;
       }
     </style>
   </head>
 
   <body>
-    <button onclick="transmitMessage('red')">Red</button>
-    <button onclick="transmitMessage('blue')">Blue</button>
-    <button onclick="transmitMessage('yellow')">Yellow</button>
-    <button onclick="transmitMessage('green')">Green</button>
+    <div id="buttons">
+      <button class="red" onclick="transmitMessage('red')">Red</button>
+      <button class="blue" onclick="transmitMessage('blue')">Blue</button>
+      <button class="yellow" onclick="transmitMessage('yellow')">Yellow</button>
+      <button class="green" onclick="transmitMessage('green')">Green</button>
+    </div>
+    <br />
+    <br />
+    Crossfade: <span id="xfade_value">0.5s</span>
+    <div class="slidecontainer">
+      <input
+        type="range"
+        min="0"
+        max="10"
+        value="5"
+        class="slider"
+        id="xfade_range"
+      />
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
       var socket = io();
+      xfade = "0.5s";
 
       function transmitMessage(color) {
-        socket.emit("chat message", color);
+        var msg = { color: color, xfade: xfade };
+        socket.emit("chat message", msg);
       }
+      var slider = document.getElementById("xfade_range");
+      var xfade_value = document.getElementById("xfade_value");
+      slider.oninput = function () {
+        xfade = (this.value * 0.1).toFixed(1) + "s";
+        xfade_value.innerHTML = xfade;
+      };
     </script>
   </body>
 </html>

@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FRTHR Lights Console</title>
+    <title>FRTHR Flare Console</title>
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
+        background-color: black !important;
+        color: white !important;
       }
       #xfade_value {
         font-weight: bold;
         font-size: 1.3em;
-        color: black;
       }
       button {
-        padding: 20px;
+        padding: 30px;
         width: 100%;
         color: #ffffff;
         border: 4px double #cccccc;
@@ -43,7 +44,7 @@
         appearance: none;
         width: 100%;
         height: 50px;
-        background: #8e8e8e;
+        background: #888888;
         outline: none;
         opacity: 0.7;
         -webkit-transition: 0.2s;
@@ -64,21 +65,29 @@
   <body>
     <div class="container overflow-hidden">
       <div class="row mt-5">
-        <div class="col text-center"><h3>FURTHER Flare Console</h3></div>
+        <div class="col text-center">
+          <img src="images/Further-Logo-400p.png" width="50" />
+        </div>
       </div>
-      <div class="row mt-5">
-        <div class="col">
+
+      <div class="row mt-1">
+        <div class="col text-center"><h1>Flare Console</h1></div>
+      </div>
+      <div class="row">
+        <div class="col mt-3">
           <button class="red" onclick="transmitMessage('red')">Red</button>
         </div>
-        <div class="col">
+        <div class="col mt-3">
           <button class="blue" onclick="transmitMessage('blue')">Blue</button>
         </div>
-        <div class="col">
+      </div>
+      <div class="row">
+        <div class="col mt-3">
           <button class="yellow" onclick="transmitMessage('yellow')">
             Yellow
           </button>
         </div>
-        <div class="col">
+        <div class="col mt-3">
           <button class="green" onclick="transmitMessage('green')">
             Green
           </button>

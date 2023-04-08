@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FRTHR Lights Console</title>
+    <style>
+      button {
+        padding: 10px;
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="transmitMessage('red')">Red</button>
+    <button onclick="transmitMessage('blue')">Blue</button>
+    <button onclick="transmitMessage('yellow')">Yellow</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      var socket = io();
+
+      function transmitMessage(color) {
+        socket.emit("chat message", color);
+      }
+    </script>
+  </body>
+</html>

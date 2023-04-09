@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="row mt-3">
-        <div class="col">Crossfade: <span id="xfade_value">0.5s</span></div>
+        <div class="col">Crossfade: <span id="xfade_value">0.2s</span></div>
       </div>
       <div class="row">
         <div class="slidecontainer">
@@ -72,7 +72,7 @@
             type="range"
             min="0"
             max="10"
-            value="5"
+            value="2"
             class="slider"
             id="xfade_range"
           />
@@ -90,7 +90,7 @@
       </div>
       <div class="row mt-3">
         <div class="col">
-          Flicker Speed: <span id="flickerSpeed_value">0.5s</span>
+          Flicker Speed: <span id="flickerSpeed_value">0.2s</span>
           <small>(takes effect after command)</small>
         </div>
       </div>
@@ -100,7 +100,7 @@
             type="range"
             min="0"
             max="10"
-            value="5"
+            value="2"
             class="slider"
             id="flickerSlider"
           />
@@ -111,8 +111,8 @@
 
     <script>
       var socket = io();
-      var xfade = "0.5s"; // crossfade
-      var flickerSpeed = "0.5s";
+      var xfade = "0.2s"; // crossfade
+      var flickerSpeed = "0.2s";
       var theFlicker = "OFF";
       var theColor = "black";
 

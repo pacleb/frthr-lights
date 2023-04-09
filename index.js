@@ -11,7 +11,7 @@ app.get("/console", (req, res) => {
   res.sendFile(__dirname + "/console.html");
 });
 
-app.use("/images", express.static("images"));
+app.use(express.static("public"));
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {

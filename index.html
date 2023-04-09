@@ -2,36 +2,78 @@
 <html>
   <head>
     <title>FRTHR Flare</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cogdasma.sirv.com/favicon/favicon.ico"
+    />
     <style>
       body {
         background: black;
         transition-duration: 0.5s;
+        margin: 0px;
+        height: 100%;
       }
-      #content {
-        color: gray;
+      #container {
+        color: white;
         font-family: Arial, Helvetica, sans-serif;
         position: absolute;
-        top: 45%;
-        width: 90%;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+      }
+      .title {
         text-align: center;
-        font-size: 2em;
-        overflow: auto;
+        margin-top: 15px;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      #cover {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background: black;
+        opacity: 0;
+      }
+      @keyframes blinker {
+        50% {
+          opacity: 1;
+        }
       }
     </style>
   </head>
   <body>
     <script src="/socket.io/socket.io.js"></script>
-
     <script>
       var socket = io();
-
       socket.on("chat message", function (msg) {
         document.body.style.background = msg.color;
         document.body.style.transitionDuration = msg.xfade;
-        var content = document.getElementById("content");
-        content.style.display = "none";
+        var container = document.getElementById("container");
+        container.style.display = "none";
+        var cover = document.getElementById("cover");
+        if (msg.flicker == "ON") {
+          cover.style.animation =
+            "blinker " + msg.flickerSpeed + " linear infinite";
+        } else {
+          cover.style.animation = "";
+        }
       });
     </script>
-    <div id="content">Ready</div>
+    <div id="cover">
+      <div id="container">
+        <div style="text-align: center">
+          <img
+            src="https://cogdasma.sirv.com/Further-Logo-200p.png"
+            width="50"
+          />
+        </div>
+        <div class="title">FLARE</div>
+      </div>
+    </div>
   </body>
 </html>

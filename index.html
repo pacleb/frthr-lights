@@ -37,7 +37,7 @@
         bottom: 0px;
         left: 0px;
         background: black;
-        opacity: 0;
+        opacity: 1;
       }
       @keyframes blinker {
         50% {
@@ -56,6 +56,7 @@
         var container = document.getElementById("container");
         container.style.display = "none";
         var cover = document.getElementById("cover");
+        cover.style.opacity = 0;
         if (msg.flicker == "ON") {
           cover.style.animation =
             "blinker " + msg.flickerSpeed + " linear infinite";
